@@ -5,16 +5,28 @@ body{
     background-color: #f0f8ff;
 }
 
-.card {
+.outter_card {
     background-color: #094293;
-    margin: 40px;
+    margin: 3%;
+}
+
+.inner_card {
     display: flex;
     justify-content: center;
 }
 
 #My_photo {
-    width: 50%;
+    width: 35%;
     height: auto;
-    justify-content: center;
     margin: 10px;
+}
+
+.outter_card h1, .outter_card p {
+    color: white;
+    text-align: justify;
+    align-items: end;
+    margin: 2%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
 }
