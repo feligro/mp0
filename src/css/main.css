@@ -6,27 +6,46 @@ body{
 }
 
 .outter_card {
-    background-color: #094293;
-    margin: 3%;
+    background-color: #5bc78e;
+    margin: 3% auto;
+    width: 60%;
+    padding: 0.1%;
+    padding-bottom: 3%;
+    text-align: justify;
 }
 
 .inner_card {
     display: flex;
     justify-content: center;
-}
-
-#My_photo {
-    width: 35%;
-    height: auto;
     margin: 10px;
 }
 
-.outter_card h1, .outter_card p {
+#MyPhoto {
+    width: 150px;
+    height: 150px;
+}
+
+.outter_card h1, 
+.outter_card h4,
+.outter_card p {
     color: white;
-    text-align: justify;
     align-items: end;
     margin: 2%;
-    margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    padding: 0.75%;
+}
+
+.outter_card a {
+    color: darkblue;
+    text-align: justify;
+    text-decoration: underline;
+    align-items: end;
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+#My_bio{
+    text-align: justify;
 }
