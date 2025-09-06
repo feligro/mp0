@@ -10,25 +10,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const UC3MBtn = document.getElementById('UC3MBtn');
   const UIUCBtn = document.getElementById('UIUCBtn');
 
-  const uc3mBg = styles.getPropertyValue('--uc3m-bg').trim();
-  const uc3mText = styles.getPropertyValue('--uc3m-text').trim();
-  const uc3mLink = styles.getPropertyValue('--uc3m-link').trim();
-  const uiucBg = styles.getPropertyValue('--uiuc-bg').trim();
-  const uiucText = styles.getPropertyValue('--uiuc-text').trim();
-  const uiucLink = styles.getPropertyValue('--uiuc-link').trim();
+  const UC3M = {
+    bg: 'var(--uc3m-bg)',
+    text: 'var(--uc3m-text)',
+    link: 'var(--uc3m-link)'
+  };
+  const UIUC = {
+    bg: 'var(--uiuc-bg)',
+    text: 'var(--uiuc-text)',
+    link: 'var(--uiuc-link)'
+  };
 
-  // --- (A) Expand/Collapse details below the name ---
-  // Works without changing your HTML: we toggle inline styles on all
-  // siblings after the <h1 id="MyName">.
+        // --- (A) Expand/Collapse text below name ---
   let detailsHidden = false;
   function setDetailsVisibility(hidden) {
     let node = nameEl.nextElementSibling;
     while (node) {
-      // Don’t hide the name itself; hide email/link/paragraphs
+
       node.style.display = hidden ? 'none' : '';
       node = node.nextElementSibling;
     }
-    // Keep a11y hint via aria-expanded (not required, but nice)
+
     nameEl.setAttribute('aria-expanded', String(!hidden));
   }
   setDetailsVisibility(false);
@@ -37,40 +39,38 @@ document.addEventListener('DOMContentLoaded', () => {
     detailsHidden = !detailsHidden;
     setDetailsVisibility(detailsHidden);
   });
-  // Keyboard support (Enter/Space)
-  nameEl.tabIndex = 0;
-  nameEl.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      nameEl.click();
-    }
-  });
 
-  // --- (B) Theme flip on double-click of the card ---
-  // No CSS edits needed: we apply inline colors so they override your CSS.
-  const UC3M = {
-    bg: '#0055a5', link: '#ffff99'
-  };
-  const UIUC  = {
-    bg: '#e84a27', link: '#003366'
-  };
+      // --- (B) Theme change
   function applyTheme(mode) {
     const palette = mode === 'uiuc' ? UIUC : UC3M;
     card.style.backgroundColor = palette.bg;
-    // Paint text elements (inline style beats CSS)
+
     card.querySelectorAll('h1,h4,p').forEach(el => el.style.color = palette.text);
     card.querySelectorAll('a').forEach(el => el.style.color = palette.link);
     localStorage.setItem('theme', mode);
   }
-  // Restore last theme or default to light
-  applyTheme(localStorage.getItem('theme') === 'uiuc' ? 'uiuc' : 'uc3m');
 
-  // --- (C) Language toggle on "L" key (English ↔ Español) ---
+  
+  if (UC3MBtn) {
+    UC3MBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      applyTheme('uc3m');
+    });
+  }
+
+  if (UIUCBtn) {
+    UIUCBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      applyTheme('uiuc');
+    });
+  }
+
+        // --- (C) Language cahnge (English - Spanish) ---
   const i18n = {
     en: {
       link: 'My Github profile',
       bio1: `I am a Computer Science student at Universidad Carlos III de Madrid (UC3M).
-             Currently, an exchange student at the University of Illinois Urbana-Champaign (UIUC).
+             Currently, an exchange student at University of Illinois Urbana-Champaign (UIUC).
              My interests lie in web development, data science and machine learning.`,
       bio2: `I enjoy building tools that combine programming and design to create both practical and useful solutions.
              In the past, I have worked on academic projects involving machine learning and prediction.
@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   applyLang(localStorage.getItem('lang') === 'es' ? 'es' : 'en');
+
   if (LangBtn) {
     LangBtn.addEventListener('click', () => {
       const next = (localStorage.getItem('lang') === 'es') ? 'en' : 'es';
@@ -105,24 +106,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (UC3MBtn) {
-    UC3MBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      applyTheme('uc3m');
-    });
-  }
 
-if (UIUCBtn) {
-    UIUCBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      applyTheme('uiuc');
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key.toLowerCase() === 'l') {
-      const next = (localStorage.getItem('lang') === 'es') ? 'en' : 'es';
-      applyLang(next);
-    }
-  });
 });

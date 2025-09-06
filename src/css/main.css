@@ -5,6 +5,8 @@
   --uc3m-link: #ffff99;
 
   --uiuc-bg:#e84a27;
+  --uiuc-text:#ffffff;
+  --uiuc-link:#003366;
 }
 
 body{
@@ -91,9 +93,9 @@ body{
 }
 
 #UC3MBtn {
-  background-color: var(--uc3m-bg);  /* UC3M blue */
+  background-color: var(--uc3m-bg);
 }
 
 #UIUCBtn {
-  background-color: var(--uiuc-bg);  /* UIUC orange */
+  background-color: var(--uiuc-bg);
 }
