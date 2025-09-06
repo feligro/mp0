@@ -1,16 +1,23 @@
 /* Your CSS here. */
+:root {
+  --uc3m-bg: #0055a5;
+  --uc3m-text: #ffffff;
+  --uc3m-link: #ffff99;
+
+  --uiuc-bg:#e84a27;
+}
+
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 30px;
-    background-color: #f0f8ff;
+    background-color: var(--uc3m-text)
 }
 
 .outter_card {
-    background-color: #5bc78e;
+    background-color: var(--uc3m-bg);
     margin: 3% auto;
-    width: 85%;
+    width: 80%;
     padding: 0.1%;
-    padding-bottom: 3%;
     text-align: justify;
 }
 
@@ -27,7 +34,7 @@ body{
 
 .outter_card h1, 
 .outter_card h4,
-.outter_card p {
+#MyBio, #MyBio2 {
     color: white;
     align-items: end;
     margin: 2%;
@@ -36,16 +43,57 @@ body{
     padding: 0.75%;
 }
 
+.link_box { 
+  text-align: center; 
+}
+
 .outter_card a {
-    color: darkblue;
+    color: var(--uc3m-link);
     text-align: justify;
     text-decoration: underline;
     align-items: end;
     margin: 2%;
-    display: flex;
-    justify-content: center;
+    display: inline;
 }
 
-#My_bio{
-    text-align: justify;
+#MyEmailAddress {
+    font-style: italic;
+}
+
+/*Extra JavaScript inserted styles*/
+.outter_card {
+    position: relative; 
+}
+#LanguageBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+}
+
+#universityButtons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+#UC3MBtn, #UIUCBtn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+#UC3MBtn {
+  background-color: var(--uc3m-bg);  /* UC3M blue */
+}
+
+#UIUCBtn {
+  background-color: var(--uiuc-bg);  /* UIUC orange */
 }
