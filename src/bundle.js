@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
       LangBtn.textContent = (lang === 'en') ? 'ES' : 'EN';
     }
   }
-  applyLang(localStorage.getItem('lang') === 'en' ? 'en' : 'es');
+  applyLang(localStorage.getItem('lang') === 'es' ? 'es' : 'en');
 
   if (LangBtn) {
     LangBtn.addEventListener('click', () => {
