@@ -1,6 +1,6 @@
 // bundle.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements we’ll use
+
   const card   = document.querySelector('.outter_card');
   const nameEl = document.getElementById('MyName');
   const link   = document.getElementById('MyGithub');
@@ -9,6 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const LangBtn = document.getElementById('LanguageBtn');
   const UC3MBtn = document.getElementById('UC3MBtn');
   const UIUCBtn = document.getElementById('UIUCBtn');
+
+  const uc3mBg = styles.getPropertyValue('--uc3m-bg').trim();
+  const uc3mText = styles.getPropertyValue('--uc3m-text').trim();
+  const uc3mLink = styles.getPropertyValue('--uc3m-link').trim();
+  const uiucBg = styles.getPropertyValue('--uiuc-bg').trim();
+  const uiucText = styles.getPropertyValue('--uiuc-text').trim();
+  const uiucLink = styles.getPropertyValue('--uiuc-link').trim();
 
   // --- (A) Expand/Collapse details below the name ---
   // Works without changing your HTML: we toggle inline styles on all
